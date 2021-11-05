@@ -105,7 +105,23 @@ function stampPost(){
         </div>            
     </div>`
     }
-}
+};
+
+//function addLikes(){
+
+    const button = document.querySelector(".like-button");
+
+    var counterLikes = document.querySelector(".js-likes-counter");
+
+    counterLikes = 0;
+
+    button.addEventListener("click",
+    function(){
+        counterLikes++;
+        console.log(counterLikes);
+    }
+    )
+//}
 
 
 
