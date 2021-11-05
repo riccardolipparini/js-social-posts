@@ -18,28 +18,32 @@ const posts = [
         "name": "Phil Mangione",
         "date" : "05/11/2021",
         "postText" : "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
-        "postImage" : "https://unsplash.it/600/300?image=171"    
+        "postImage" : "https://unsplash.it/600/300?image=171",
+        "likes" : "80"   
     },
     {
         "profilePic" : "https://picsum.photos/300/300",
         "name": "Paolo Rossi",
         "date" : "04/11/2021",
         "postText" : "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto.Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
-        "postImage" : ""    
+        "postImage" : "",
+        "likes" : "110"  
     },
     {
         "profilePic" : "https://picsum.photos/300/300",
         "name": "Antonio Grismaldi",
         "date" : "02/11/2546",
         "postText" : "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
-        "postImage" : ""    
+        "postImage" : "",
+        "likes" : "43"    
     },
     {
         "profilePic" : "https://picsum.photos/200/300",
         "name": "Lucia Borbone",
         "date" : "01/11/1670",
         "postText" : "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
-        "postImage" : "https://picsum.photos/600/300"    
+        "postImage" : "https://picsum.photos/600/300",
+        "likes" : "1250"    
     }
     
     
@@ -47,21 +51,6 @@ const posts = [
 console.log(posts);
 
 stampPost();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function stampPost(){
@@ -73,6 +62,9 @@ function stampPost(){
         const date = oggetto.date;
         const postText = oggetto.postText;
         const postImage = oggetto. postImage;
+        const likes = oggetto.likes;
+
+        
 
         document.getElementById("container").innerHTML +=`<div class="post">
         <div class="post__header">
@@ -93,13 +85,13 @@ function stampPost(){
         <div class="post__footer">
             <div class="likes js-likes">
                 <div class="likes__cta">
-                    <a class="like-button  js-like-button" href="#" data-postid="1">
+                    <a class="like-button  js-like-button" href="#" data-postid="${i}">
                         <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                         <span class="like-button__label">Mi Piace</span>
                     </a>
                 </div>
                 <div class="likes__counter">
-                    Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
+                    Piace a <b id="like-counter-1" class="js-likes-counter">${likes}</b> persone
                 </div>
             </div> 
         </div>            
@@ -108,18 +100,29 @@ function stampPost(){
 };
 
 //function addLikes(){
+//     const button = document.querySelector(".like-button");
 
-    const button = document.querySelectorAll(".like-button");
+//     var counterLikes = 0;
 
-    var counterLikes = 0;
+//     button.addEventListener("click",
+//         function(){
+//         counterLikes++;
+//         console.log(counterLikes);
+// }
+// )
+let buttons = document.querySelectorAll(".js-like-button");
+let numeroLike = document.querySelectorAll(".js-likes-counter");
 
-    button.addEventListener("click",
-    function(){
-        counterLikes++;
-        console.log(counterLikes);
+for(i = 0; i<buttons.length; i++){
+    buttons[i].addEventListener(`click`, function(){
+        const index = buttons.getAttribute(`data-postid`);
+        posts[index].likes = parseInt(posts[index].likes) +1;
+        stampPost();
+
     }
     )
-//}
+}
+  
 
 
 
