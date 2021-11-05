@@ -109,11 +109,9 @@ function stampPost(){
 
 //function addLikes(){
 
-    const button = document.querySelector(".like-button");
+    const button = document.querySelectorAll(".like-button");
 
-    var counterLikes = document.querySelector(".js-likes-counter");
-
-    counterLikes = 0;
+    var counterLikes = 0;
 
     button.addEventListener("click",
     function(){
